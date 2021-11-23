@@ -1,0 +1,59 @@
+package  Day_004_Dropdown;
+import CommonUtil.*;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+import java.util.List;
+
+//import org.openqa.selenium.support.ui.Select;
+//import org.openqa.selenium.support.ui.Select;
+//import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.testng.annotations.*;
+//import org.openqa.selenium.support.ui.*;
+
+public class Listbox2
+{
+	
+	//Test1 will be executed driver
+	static WebDriver driver;
+	
+	
+
+	@Test
+	public void Test1() throws Exception 
+	{
+	
+		System.setProperty("webdriver.chrome.driver","C:\\chromedriver_win32\\chromedriver.exe");
+		driver =new ChromeDriver();
+		driver.manage().window().maximize() ;	
+		//String TestURL = "https://opensource-demo.orangehrmlive.com/";
+		driver.get("https://opensource-demo.orangehrmlive.com/");
+		
+		driver.findElement(By.name("txtUsername")).sendKeys("Admin");
+		//driver.findElement(By.id("txtUsername")).sendKeys("Admin");
+		driver.findElement(By.id("txtPassword")).sendKeys("admin123");
+		driver.findElement(By.id("btnLogin")).click();	
+		
+		
+		findElement(By.linkText("Admin")).click();
+		findElement(By.linkText("Organization")).click();
+		findElement(By.linkText("Locations")).click();
+		findElement(By.id("btnAdd")).click();
+		findElement(By.id("location_name")).sendKeys("niteesh3");
+		 Select dropdown = new Select(findElement(By.id("location_country")));
+		dropdown.selectByIndex(25);
+		 //dropdown.selectByValue("CA");
+		// dropdown.selectByVisibleText("India");
+		findElement(By.id("location_province")).sendKeys("talangana");
+		findElement(By.id("location_city")).sendKeys("hyd");
+		findElement(By.id("location_address")).sendKeys("nizampet,hyd");
+		findElement(By.id("location_zipCode")).sendKeys("11/22");
+		findElement(By.id("location_phone")).sendKeys("8179749028");
+		findElement(By.id("location_fax")).sendKeys("11/2");
+		findElement(By.id("location_notes")).sendKeys("im fine in this hyd");
+		findElement(By.id("btnSave")).click();
+		
